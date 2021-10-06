@@ -1,10 +1,10 @@
-export default function Post({toPost, showDetail}) {
+export default function Post({toPost: {id, title}, showDetail}) {
 
 return (
     <div>
-        {toPost.id} - {toPost.title} -
+        {id} - {title} -
         <button onClick={() => {
-            showDetail(toPost.id);
+            showDetail(id);
         }}>click</button>
     </div>
    );
