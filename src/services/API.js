@@ -5,7 +5,10 @@ let axiosInstance = axios.create({
     headers: {"Content-Type": "application/json"}
 });
 
-const getAllPosts = () => axiosInstance();
+const getAllPosts = () => axiosInstance('');
 const getSinglePost = (id) => axiosInstance.get('/'+ id, {params: {_embed: "comments"}});
+const createPost = (title, body ) => axiosInstance.post('',{title, body});
+const updatePostById = (id, newtitle, newbody) => axiosInstance.put('/'+ id, {newtitle, newbody} );
 
-export {getAllPosts, getSinglePost};
+
+export {getAllPosts, getSinglePost, createPost, updatePostById};

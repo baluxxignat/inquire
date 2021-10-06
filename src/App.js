@@ -1,31 +1,27 @@
-import './App.css';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
 import Posts from "./components/posts/Posts";
-import {useEffect, useState} from "react";
-import {getAllPosts, getSinglePost} from "./services/API";
-import PostDetails from "./components/post-details/PostDetails";
+import CreatePost from "./components/createPost/CreatePost";
 
 function App() {
-    let [posts, setPosts] = useState([]);
-    let [postDetails, setPostDetails] = useState(null);
-
-    function showDetail(id) {
-        getSinglePost(id).then(value => setPostDetails(value.data));
-    }
-
-    useEffect(() => {
-        getAllPosts().then(responce => {
-            setPosts(responce.data);
-        });
-    }, []);
 
     return (
-        <div>
-            <Posts items={posts} showDetail={showDetail}/>
-            <hr/>
-            {
-                postDetails && <PostDetails details={postDetails}/>
-            }
-        </div>
+        <Router>
+            <div>
+                <Link to={'/posts'}>list of all Posts</Link>
+                <hr/>
+                <Link to={'/create'}>create Post</Link>
+            </div>
+
+            <Switch>
+                <Route path={'/posts'} component={Posts}/>
+                <Route path={'/create'} component={CreatePost}/>
+            </Switch>
+        </Router>
     );
 }
 
