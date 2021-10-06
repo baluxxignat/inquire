@@ -1,7 +1,12 @@
-export default function Posts() {
+import Post from "../post/Post";
+
+export default function Posts({items}) {
+
 return (
     <div>
-         all posts
+        {
+            items.map(singlePost => <Post toPost={singlePost}/>)
+        }
     </div>
    );
  }

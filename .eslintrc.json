@@ -1,0 +1,103 @@
+{
+  "root": true,
+  "extends": [
+    "react-app",
+    "react-app/jest"
+  ],
+  "plugins": [
+    "jsx-a11y"
+  ],
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "sourceType": "module"
+  },
+  "rules": {
+    "comma-dangle": [
+      2,
+      "never"
+    ],
+    "semi": "error",
+    "no-multi-spaces": "error",
+    "no-duplicate-imports": "error",
+    "no-mixed-spaces-and-tabs": "error",
+    "no-else-return": "error",
+    "no-empty": "off",
+    "no-empty-function": "off",
+    "no-labels": "error",
+    "object-curly-newline": "error",
+    "object-curly-spacing": [
+      2,
+      "never"
+    ],
+    "object-shorthand": [
+      2,
+      "always"
+    ],
+    "array-bracket-spacing": [
+      2,
+      "never"
+    ],
+    "max-len": [
+      2,
+      120,
+      {
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true,
+        "ignoreComments": true
+      }
+    ],
+    "consistent-return": 0,
+    "prefer-destructuring": [
+      2,
+      {
+        "array": false,
+        "object": false
+      },
+      {
+        "enforceForRenamedProperties": false
+      }
+    ],
+    "prefer-object-spread": 0,
+    // until node 8 is required
+    "prefer-rest-params": 0,
+    // until node 6 is required
+    "prefer-spread": 0,
+    // until node 6 is required
+    "function-paren-newline": 0,
+    "no-plusplus": 1,
+    "no-param-reassign": 1,
+    "strict": [
+      2,
+      "safe"
+    ],
+    "valid-jsdoc": [
+      2,
+      {
+        "requireReturn": false,
+        "requireParamDescription": false,
+        "requireReturnDescription": false
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": "tests/**",
+      "rules": {
+        "no-template-curly-in-string": 1
+      }
+    },
+    {
+      "files": "markdown.config.js",
+      "rules": {
+        "no-console": 0
+      }
+    }
+  ]
+}
