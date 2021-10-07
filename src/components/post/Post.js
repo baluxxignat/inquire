@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {getSinglePost, updatePostById} from "../../services/API";
 import PostDetails from "../post-details/PostDetails";
 import './Post.css';
-import {Route} from "react-router-dom";
+import {Route, Switch, Link} from "react-router-dom";
 import UpdatePost from "../updatePost/UpdatePost";
 
 export default function Post({toPost: {id, title}}) {
@@ -11,11 +11,6 @@ export default function Post({toPost: {id, title}}) {
 
     function showDetail(id) {
         getSinglePost(id).then(value => setPostDetails(value.data));
-    }
-
-    function updatePostInfo(id) {
-        <Route path={'/:id/update'} component={UpdatePost}/>;
-
     }
 
     return (
@@ -29,12 +24,10 @@ export default function Post({toPost: {id, title}}) {
                     }}>Display details&comments
                 </button>
 
-                <button
-                    onClick={() => {
-                        updatePostInfo(id);
-                    }}>Update post
-                </button>
-
+                <div>
+                    <Link to={'/' + id + '/update'}>Update post</Link>
+                    <Route path={'/' + id + '/update'} render={() => {return <UpdatePost/>;}}/>;
+                </div>
             </div>
             <hr/>
             {
