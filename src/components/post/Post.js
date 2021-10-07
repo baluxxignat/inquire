@@ -1,8 +1,8 @@
 import React, {useState} from "react";
-import {getSinglePost, updatePostById} from "../../services/API";
+import {getSinglePost} from "../../services/API";
 import PostDetails from "../post-details/PostDetails";
 import './Post.css';
-import {Route, Switch, Link} from "react-router-dom";
+import {Route, Switch, Link, BrowserRouter as Router} from "react-router-dom";
 import UpdatePost from "../updatePost/UpdatePost";
 
 export default function Post({toPost: {id, title}}) {
@@ -25,8 +25,17 @@ export default function Post({toPost: {id, title}}) {
                 </button>
 
                 <div>
-                    <Link to={'/' + id + '/update'}>Update post</Link>
-                    <Route path={'/' + id + '/update'} render={() => {return <UpdatePost/>;}}/>;
+                    <Router >
+                        <div>
+                            <Link to={'/' + id + '/update'}>Update post</Link>
+                        </div>
+
+                        <Switch>
+                            <Route path={'/' + id + '/update'} render={() => {
+                               return <UpdatePost id={id}/>;
+                            }}/>;
+                        </Switch>
+                    </Router>
                 </div>
             </div>
             <hr/>

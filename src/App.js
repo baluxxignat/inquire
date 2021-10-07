@@ -6,22 +6,23 @@ import {
 } from "react-router-dom";
 import Posts from "./components/posts/Posts";
 import CreatePost from "./components/createPost/CreatePost";
+import './App.css';
 
 function App() {
-
     return (
-        <Router>
-            <div>
-                <Link to={'/posts'}>list of all Posts</Link>
-                <hr/>
-                <Link to={'/create'}>create Post</Link>
-            </div>
+        <div className={'wrap'}>
+            <Router>
+                <div className={'navigation'}>
+                    <Link to={'/posts'}>list of all Posts</Link>
+                    <Link to={'/create'}>Create Post</Link>
+                </div>
 
-            <Switch>
-                <Route path={'/posts'} component={Posts}/>
-                <Route path={'/create'} component={CreatePost}/>
-            </Switch>
-        </Router>
+                <Switch>
+                    <Route path={'/posts'} component={Posts}/>
+                    <Route path={'/create'} component={CreatePost}/>
+                </Switch>
+            </Router>
+        </div>
     );
 }
 
